@@ -1,0 +1,88 @@
+/* Style the container and center everything */
+form {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+/* Center the heading */
+form h1,
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Label styling */
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Input, select, textarea styles */
+form input[type="text"],
+form input[type="email"],
+form input[type="file"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Textarea resizing */
+form textarea {
+  resize: vertical;
+}
+
+/* Radio buttons spacing */
+form input[type="radio"] {
+  margin-right: 0.5rem;
+  margin-left: 1rem;
+}
+
+/* Gender group layout inside fieldset */
+form fieldset {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form fieldset legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+/* Buttons */
+form button {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+form button[type="submit"],
+form button:last-of-type {
+  background-color: #007bff;
+  color: white;
+}
+
+form button[type="reset"],
+form button:first-of-type {
+  background-color: #6c757d;
+  color: white;
+}
