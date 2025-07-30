@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function FormComponent() {
   const [values, setValues] = useState({
@@ -13,6 +13,8 @@ function FormComponent() {
     about: "",
   });
 
+  const[errors, setErrors]= useState({});
+
   const handleChanges = (e) => {
     const { name, value, type, files } = e.target;
     if (type === "file") {
@@ -24,9 +26,16 @@ function FormComponent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("DEBUG: Form submission triggered!");
-    console.log("Form values:", JSON.stringify(values, null, 2));
-    console.log("Form submitted!", values);
+    const newErrors = validate(); //capture errors
+    setErrors(newErrors);
+
+    if(Object.keys(newErrors).length === 0){
+        console.log("DEBUG: Form submission triggered!");
+        console.log("Form values:", JSON.stringify(values, null, 2));
+        console.log("Form submitted!", values);
+    } else{
+        console.warn("Validation failed", newErrors);
+    }
   };
 
   const handleReset = () => {
@@ -40,6 +49,22 @@ function FormComponent() {
       about: "",
     });
   };
+
+  useEffect( ()=>{
+    validate();
+  }, [values]);
+
+  const validate= ()=>{
+    const newErrors = {};
+
+    if( values.username === '') newErrors.username = 'username is required';
+    if( values.email === '') newErrors.email = 'email is required'
+    if( values.contact === '') newErrors.contact = 'contact is required';
+    if( values.about === '') newErrors.about = 'description is required';
+    if( values.gender === '') newErrors.gender = 'gender is required';
+    if( !values.resume) newErrors.resume = 'resume is required';
+    return newErrors;
+    }
 
   return (
     <>
@@ -61,7 +86,6 @@ function FormComponent() {
           type="email"
           id="email"
           name="email"
-          required
           value={values.email}
           onChange={handleChanges}
         ></input>
